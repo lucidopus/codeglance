@@ -157,3 +157,5 @@ project-root/
 5. **Focus on developer value**: Highlight files and directories that are most relevant for understanding or modifying the project
 
 Remember: The goal is to create a visual guide that helps developers quickly navigate and understand the project structure, not to list every single file.
+
+Save the visual-tree of that repository in guides/tree.md
