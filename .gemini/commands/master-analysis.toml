@@ -1,0 +1,62 @@
+[command]
+name = "master-analysis"
+description = "Create comprehensive documentation suite with cross-references and synthesis"
+usage = "/master-analysis [repository_path]"
+version = "1.0.0"
+
+[command.parameters]
+repository_path = { type = "string", required = false, default = ".", description = "Path to repository to analyze" }
+generate_index = { type = "boolean", required = false, default = true, description = "Generate master index file" }
+
+[command.examples]
+basic = "/master-analysis"
+no_index = "/master-analysis . --generate-index false"
+
+[command.workflow]
+steps = [
+  "synthesize-existing-guides",
+  "create-cross-references",
+  "generate-master-index",
+  "create-navigation-paths",
+  "add-learning-sequences",
+  "finalize-documentation-suite"
+]
+
+[command.outputs]
+primary = "guide/README.md"
+index = "guide/index.md"
+navigation = "guide/navigation.md"
+learning_paths = "guide/learning-paths.md"
+
+[command.synthesis]
+progressive_disclosure = true
+cross_reference_guides = true
+create_navigation = true
+learning_sequences = true
+executive_summary = true
+
+[command.documentation_rules]
+human_friendly_language = true
+big_picture_first = true
+minimize_jargon = true
+provide_context = true
+actionable_next_steps = true
+
+[command.organization]
+logical_flow = true
+clear_hierarchy = true
+easy_navigation = true
+searchable_structure = true
+
+[command.integration]
+link_existing_guides = true
+maintain_consistency = true
+avoid_duplication = true
+ensure_completeness = true
+
+[command.metadata]
+author = "Codeglance Team"
+category = "synthesis"
+tags = ["comprehensive", "documentation", "cross-reference", "master-guide"]
+output_format = "markdown"
+created = "2024-09-06"
