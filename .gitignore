@@ -19,6 +19,7 @@ pids
 lib-cov
 
 .claude/
+Claude.md
 
 # Coverage directory used by tools like istanbul
 coverage
