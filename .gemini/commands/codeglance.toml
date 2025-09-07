@@ -32,35 +32,35 @@ Execute the following analysis prompts in order, using the content from the `pro
 - Identify technology stack, frameworks, and dependencies
 - Document key features and problem context
 - **Reference**: Use guidance from `prompts/project-overview.md`
-- **Output**: Generate `./guide/overview.md`
+- **Output**: Generate `./guide/01-overview.md`
 
 #### Phase 2: Structure Mapping (visual-tree)  
 - Create comprehensive directory tree with meaningful icons
 - Identify important files and their purposes
 - Document file organization patterns
 - **Reference**: Use guidance from `prompts/visual-tree.md`
-- **Output**: Generate `./guide/tree.md`
+- **Output**: Generate `./guide/02-tree.md`
 
 #### Phase 3: Deep File Analysis (file-insights)
 - Analyze critical files with usage examples
 - Document key functions and their purposes
 - Map file connections and dependencies
 - **Reference**: Use guidance from `prompts/file-insights.md`
-- **Output**: Generate `./guide/file-insights.md`
+- **Output**: Generate `./guide/03-file-insights.md`
 
 #### Phase 4: System Architecture (architecture)
 - Document system design with diagrams
 - Map component relationships and data flow
 - Identify design patterns and architectural decisions
 - **Reference**: Use guidance from `prompts/architecture.md`
-- **Output**: Generate `./guide/architecture.md`
+- **Output**: Generate `./guide/04-architecture.md`
 
 #### Phase 5: Developer Onboarding (quick-start)
 - Create step-by-step setup instructions
 - Document prerequisites and environment setup
 - Provide common commands and troubleshooting
 - **Reference**: Use guidance from `prompts/quick-start.md`
-- **Output**: Generate `./guide/quick-start.md`
+- **Output**: Generate `./guide/05-quick-start.md`
 
 #### Phase 6: Master Analysis (master-analysis)
 - Synthesize all previous analyses
@@ -110,11 +110,11 @@ After completion:
 ./
 ├── repos/[repo-name]/     # Cloned repository
 └── guide/                 # Generated documentation
-    ├── overview.md
-    ├── tree.md
-    ├── file-insights.md
-    ├── architecture.md
-    ├── quick-start.md
+    ├── 01-overview.md
+    ├── 02-tree.md
+    ├── 03-file-insights.md
+    ├── 04-architecture.md
+    ├── 05-quick-start.md
     └── [additional files from master-analysis]
 ```
 
