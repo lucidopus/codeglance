@@ -1,0 +1,123 @@
+description = "Execute comprehensive code analysis workflow on a GitHub repository using orchestrated prompts"
+prompt = """
+You are an expert code analyst and documentation generator. Execute a comprehensive code analysis workflow on the provided GitHub repository.
+
+## Task: Repository Analysis Orchestration
+
+Given a GitHub repository URL, perform the following workflow:
+
+### 1. Repository Setup
+```bash
+# Create repos directory if needed
+mkdir -p repos
+
+# Extract repository name and clone
+REPO_NAME=$(basename "{{args}}" .git)
+git clone "{{args}}" "repos/$REPO_NAME"
+cd "repos/$REPO_NAME"
+
+# Verify repository structure
+echo "Repository cloned successfully. Structure:"
+ls -la
+```
+
+### 2. Sequential Analysis Execution
+
+Execute the following analysis prompts in order, using the content from the `prompts/` folder as guidance:
+
+#### Phase 1: Foundation Understanding (project-overview)
+- Analyze the project's purpose, goals, and core functionality
+- Identify technology stack, frameworks, and dependencies
+- Document key features and problem context
+- **Reference**: Use guidance from `prompts/project-overview.md`
+- **Output**: Generate `./guide/overview.md`
+
+#### Phase 2: Structure Mapping (visual-tree)  
+- Create comprehensive directory tree with meaningful icons
+- Identify important files and their purposes
+- Document file organization patterns
+- **Reference**: Use guidance from `prompts/visual-tree.md`
+- **Output**: Generate `./guide/tree.md`
+
+#### Phase 3: Deep File Analysis (file-insights)
+- Analyze critical files with usage examples
+- Document key functions and their purposes
+- Map file connections and dependencies
+- **Reference**: Use guidance from `prompts/file-insights.md`
+- **Output**: Generate `./guide/file-insights.md`
+
+#### Phase 4: System Architecture (architecture)
+- Document system design with diagrams
+- Map component relationships and data flow
+- Identify design patterns and architectural decisions
+- **Reference**: Use guidance from `prompts/architecture.md`
+- **Output**: Generate `./guide/architecture.md`
+
+#### Phase 5: Developer Onboarding (quick-start)
+- Create step-by-step setup instructions
+- Document prerequisites and environment setup
+- Provide common commands and troubleshooting
+- **Reference**: Use guidance from `prompts/quick-start.md`
+- **Output**: Generate `./guide/quick-start.md`
+
+#### Phase 6: Master Analysis (master-analysis)
+- Synthesize all previous analyses
+- Create cross-referenced documentation suite
+- Generate executive summary and navigation
+- **Reference**: Use guidance from `prompts/master-analysis.md`
+- **Output**: Multiple interconnected guide files
+
+### 3. Implementation Guidelines
+
+**For each phase:**
+1. Read the corresponding prompt file from `prompts/` folder for detailed instructions
+2. Analyze the repository according to those specifications
+3. Generate comprehensive documentation following the prompt guidelines
+4. Ensure outputs build upon previous analysis results
+5. Maintain consistent formatting and cross-references
+
+**Error Handling:**
+- If cloning fails, provide troubleshooting steps
+- Continue with remaining phases if one fails
+- Provide summary of successful and failed operations
+
+**Output Organization:**
+- Create `./guide/` directory in the current working directory
+- Save each phase output with descriptive filenames
+- Generate navigation index linking all documents
+- Ensure cross-references between guides work properly
+
+### 4. Pre-execution Validation
+
+Before starting:
+1. Validate GitHub URL format
+2. Check if repository already exists in `repos/`
+3. Verify git is installed and accessible
+4. Ensure sufficient disk space
+
+### 5. Post-execution Summary
+
+After completion:
+- Summarize all executed phases
+- Provide links to generated documentation
+- Highlight key insights and findings
+- Suggest next steps for repository exploration
+
+## Expected Directory Structure After Analysis:
+```
+./
+├── repos/[repo-name]/     # Cloned repository
+└── guide/                 # Generated documentation
+    ├── overview.md
+    ├── tree.md
+    ├── file-insights.md
+    ├── architecture.md
+    ├── quick-start.md
+    └── [additional files from master-analysis]
+```
+
+## Execution Command:
+Begin comprehensive analysis workflow for repository: {{args}}
+
+**Important**: Follow the prompts in the `prompts/` folder exactly as specified. Each prompt contains detailed instructions for that specific phase of analysis. The orchestrator should execute them sequentially, building a complete understanding of the repository.
+"""
