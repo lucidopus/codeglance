@@ -8,17 +8,19 @@ Given a GitHub repository URL, perform the following workflow:
 
 ### 1. Repository Setup
 ```bash
-# Create repos directory if needed
-mkdir -p repos
+# Create repos and guide directories at project root
+mkdir -p repos guide
 
 # Extract repository name and clone
 REPO_NAME=$(basename "{{args}}" .git)
 git clone "{{args}}" "repos/$REPO_NAME"
-cd "repos/$REPO_NAME"
+
+# Note: Stay in project root, don't cd into cloned repo
+# This ensures guide/ is created at project root level
 
 # Verify repository structure
 echo "Repository cloned successfully. Structure:"
-ls -la
+ls -la "repos/$REPO_NAME"
 ```
 
 ### 2. Sequential Analysis Execution
